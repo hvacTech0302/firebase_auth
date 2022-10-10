@@ -13,7 +13,7 @@ const setupUI = user => {
         // get user UID
         db.collection('users').doc(user.uid).get().then(doc => {
             // show user details
-        const html = `
+            const html = `
         <table class="centered highlight">
             <tr>
                 <th>Email Address:</th>
@@ -26,10 +26,10 @@ const setupUI = user => {
         </table>
         `
 
-        accountDetails.innerHTML += html
+            accountDetails.innerHTML += html
         })
 
-        
+
     } else {
         loggedInLinks.forEach(item => item.style.display = 'none')
         loggedOutLinks.forEach(item => item.style.display = 'block')
@@ -44,29 +44,29 @@ const setupGuides = data => {
     if (data.length) {
         let html = ''
 
-            data.forEach(doc => {
-                const title = doc.data().title
-                const content = doc.data().content
-                const li = `
+        data.forEach(doc => {
+            const title = doc.data().title
+            const content = doc.data().content
+            const li = `
                     <li>
                         <div class="collapsible-header grey lighten-4">${title}</div>
                         <div class="collapsible-body white">${content}</div>
                     </li>
                 `
-                html += li
-            })
-            
-            guideList.innerHTML = html
+            html += li
+        })
 
-} else {
-    guideList.innerHTML = `
+        guideList.innerHTML = html
+
+    } else {
+        guideList.innerHTML = `
         <h5 class="center-align">Login to view guides.</h5>
     `
     }
-    
+
 }
 
-    
+
 
 // set up materialize components
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,4 +76,3 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = document.querySelectorAll('.collapsible')
     M.Collapsible.init(items)
 })
-

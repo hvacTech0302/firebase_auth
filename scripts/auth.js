@@ -3,13 +3,13 @@ auth.onAuthStateChanged(user => {
     // load guides and UI
     if (user) {
         db.collection('guides').onSnapshot(snapshot => {
-                setupGuides(snapshot.docs)
-                setupUI(user)
-            }, err => console.log(err.message))
+            setupGuides(snapshot.docs)
+            setupUI(user)
+        }, err => console.log(err.message))
     } else {
         setupUI(null)
         setupGuides([])
-        
+
     }
 })
 
@@ -20,8 +20,8 @@ createForm.addEventListener('submit', e => {
     e.preventDefault()
 
     const guide = {
-      title: createForm.title.value,
-      content: createForm.content.value
+        title: createForm.title.value,
+        content: createForm.content.value
     }
 
     db.collection('guides').add(guide)
@@ -51,14 +51,14 @@ signupForm.addEventListener('submit', e => {
     auth.createUserWithEmailAndPassword(email, password)
         .then(cred => {
             return db.collection('users').doc(cred.user.uid).set({
-                bio: signupForm['signup-bio'].value
-            })
-            .then(() => {
-                const modal = document.querySelector('#modal-signup')
-                M.Modal.getInstance(modal).close()
-                signupForm.reset()
-            })
-            
+                    bio: signupForm['signup-bio'].value
+                })
+                .then(() => {
+                    const modal = document.querySelector('#modal-signup')
+                    M.Modal.getInstance(modal).close()
+                    signupForm.reset()
+                })
+
         })
 })
 
@@ -82,7 +82,7 @@ loginForm.addEventListener('submit', e => {
     // get user info
     const email = loginForm['login-email'].value
     const password = loginForm['login-password'].value
-    
+
     // login the user
     auth.signInWithEmailAndPassword(email, password)
         .then(() => {
@@ -92,5 +92,3 @@ loginForm.addEventListener('submit', e => {
             loginForm.reset()
         })
 })
-
-

@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <title>Game Guidez</title>
 </head>
+
 <body class="grey lighten-3">
 
     <!-- NAV BAR -->
@@ -33,9 +35,9 @@
                     <a href="#" class="grey-text modal-trigger" data-target="modal-signup">Sign up</a>
                 </li>
             </ul>
-         </div>
+        </div>
     </nav>
-    
+
     <!-- SIGN UP MODAL -->
 
     <div id="modal-signup" class="modal">
@@ -133,7 +135,9 @@
         const db = firebase.firestore()
 
         // update firestore settings
-        db.settings({ timestampsInSnapshots: true })
+        db.settings({
+            timestampsInSnapshots: true
+        })
     </script>
 
     <!-- Materialize CDN -->
@@ -144,4 +148,5 @@
     <script src="scripts/index.js"></script>
 
 </body>
+
 </html>
